@@ -2,7 +2,7 @@
 from redis import Redis
 import os
 
-redis = Redis()
+redis = Redis() # default host/port is localhost:6379
 # redis = Redis(host=os.environ.get("REDIS_HOST", "localhost"),
 #               port=os.environ.get("REDIS_PORT", 6379),
 #               db=0)
