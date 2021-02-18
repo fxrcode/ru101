@@ -40,10 +40,18 @@ SPOP key [count]            # remove random count of item from set
 SDIFF key [key...]          # get members of the set resulting from the difference between the 1st set and all the successive sets.
 
 ## Sorted Sets
-ZADD key [NX|XX] score memeber [score member...]
+ZADD key [NX | XX] score memeber [score member...]
 ZREVRANGE key start end WITHSCORES
 ZRANK
 ZSCORE
+ZCOUNT key min max # count # members in a sorted set with scores with in [min, max]
+ZREM               # remove a member by value, there're other commands to remove by position/score
+ZINTERSTORE destination numkeys key [key ...] [WEIGHTS weight] [AGGREGATE SUM | MIN | MAX]
+
+## Transaction
+MULTI
+EXEC
+DISCARD
 
 ## Misc
 TYPE key            # tell the type of the value
