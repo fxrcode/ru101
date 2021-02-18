@@ -13,7 +13,7 @@ TTL key                                 # check # sec until a key is deleted
 PERSIST key                             # remove ttl on key, so key never expires
 
 ## Hashes
-HSET key field value
+HSET key field value [field value ...]
 HDEL key field [field...]
 HEXISTS key field
 HGET key field
@@ -21,6 +21,8 @@ HINCRBY key field increment
 HKEYS key
 HVALS key
 HMSET key field value [field value ...]
+HMGET key field [field ...] # get values of all the given fields
+HGETALL key                 # get all field/value
 
 ## Lists
 RPUSH key value [value ...]
@@ -52,6 +54,10 @@ ZINTERSTORE destination numkeys key [key ...] [WEIGHTS weight] [AGGREGATE SUM | 
 MULTI
 EXEC
 DISCARD
+
+## Optimistic Concurrency Control
+WATCH key [key...]
+UNWATCH
 
 ## Misc
 TYPE key            # tell the type of the value
