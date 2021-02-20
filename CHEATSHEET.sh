@@ -18,8 +18,8 @@ HDEL key field [field...]
 HEXISTS key field
 HGET key field
 HINCRBY key field increment
-HKEYS key
-HVALS key
+HKEYS key # get all field names
+HVALS key # get all values
 HMSET key field value [field value ...]
 HMGET key field [field ...] # get values of all the given fields
 HGETALL key                 # get all field/value

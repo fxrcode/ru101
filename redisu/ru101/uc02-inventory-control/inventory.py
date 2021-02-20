@@ -135,14 +135,18 @@ then confirm the inventory deduction or back the deducation out."""
       order_id = generate.order_id()
       ts = int(time.time())
       price = float(redis.hget(e_key, "price:" + tier))
+      # fxr: To avoid overselling, need to incrby -qty being held
       p.hincrby(e_key, "available:" + tier, -qty)
       p.hincrby(e_key, "held:" + tier, qty)
-      # Create a hash to store the seat hold information
+      # Create a separated hash to store the seat hold information
       hold_key = keynamehelper.create_key_name("ticket_hold", event_sku)
       p.hsetnx(hold_key, "qty:" + order_id, qty)
       p.hsetnx(hold_key, "tier:" + order_id, tier)
       p.hsetnx(hold_key, "ts:" + order_id, ts)
       p.execute()
+    else:
+      print("Insufficient inventory, have {}, requested {}".format(available,
+                                                                   qty))
   except WatchError:
     print("Write Conflict in reserve: {}".format(e_key))
   finally:
@@ -287,9 +291,9 @@ def main():
   clean_keys(redis)
   create_customers(customers)
   # Performs the tests
-  test_check_and_purchase()
+  # test_check_and_purchase()
   test_reserve()
-  test_expired_res()
+  # test_expired_res()
 
 if __name__ == "__main__":
   keynamehelper.set_prefix("uc02")
