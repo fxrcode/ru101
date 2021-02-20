@@ -292,8 +292,8 @@ def main():
   create_customers(customers)
   # Performs the tests
   # test_check_and_purchase()
-  test_reserve()
-  # test_expired_res()
+  # test_reserve()
+  test_expired_res()
 
 if __name__ == "__main__":
   keynamehelper.set_prefix("uc02")
