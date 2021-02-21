@@ -50,6 +50,14 @@ ZCOUNT key min max # count # members in a sorted set with scores with in [min, m
 ZREM               # remove a member by value, there're other commands to remove by position/score
 ZINTERSTORE destination numkeys key [key ...] [WEIGHTS weight] [AGGREGATE SUM | MIN | MAX]
 
+## Bitmap
+SETBIT key offset 0/1
+BITFIELD key [set/get/incrby]
+
+## Geo
+GEOADD
+GEORADIUS
+
 ## Transaction
 MULTI
 EXEC

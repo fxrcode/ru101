@@ -291,8 +291,8 @@ def main():
   clean_keys(redis)
   create_customers(customers)
   # Performs the tests
-  # test_check_and_purchase()
-  # test_reserve()
+  test_check_and_purchase()
+  test_reserve()
   test_expired_res()
 
 if __name__ == "__main__":
