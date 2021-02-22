@@ -55,8 +55,11 @@ SETBIT key offset 0/1
 BITFIELD key [set/get/incrby]
 
 ## Geo
-GEOADD
+GEOADD key long lat member
 GEORADIUS
+GEOHAHS key member          # returns the GeoHash for one or more members of the set
+GEOPOS key member           # returns the long/latitude of one more more members.
+GEODIST key member1 member2 # return the distance between 2 members
 
 ## Transaction
 MULTI
@@ -66,6 +69,9 @@ DISCARD
 ## Optimistic Concurrency Control
 WATCH key [key...]
 UNWATCH
+
+## Lua
+EVAL script numkeys key [key...] arg [arg...]
 
 ## Misc
 TYPE key            # tell the type of the value
