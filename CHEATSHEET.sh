@@ -72,6 +72,8 @@ UNWATCH
 
 ## Lua
 EVAL script numkeys key [key...] arg [arg...]
+redis.call # propagate error back, causing EVAL to fail
+redis.pcall # return a structure representing the error response, to be programmatically dealt with
 
 ## Misc
 TYPE key            # tell the type of the value
