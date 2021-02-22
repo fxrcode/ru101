@@ -72,8 +72,12 @@ UNWATCH
 
 ## Lua
 EVAL script numkeys key [key...] arg [arg...]
-redis.call # propagate error back, causing EVAL to fail
+redis.call  # propagate error back, causing EVAL to fail
 redis.pcall # return a structure representing the error response, to be programmatically dealt with
+SCRIPT LOAD script # parse the given script, then returns the script's hash digest
+EVALSHA sha1 numkeys key [key...] arg [arg...]
+SCRIPT EXISTS sha1 [sha1...]
+SCRIPT FLUSH # will remove all cached scripts in Redis
 
 ## Misc
 TYPE key            # tell the type of the value

@@ -249,6 +249,9 @@ class TestLuaScripts(unittest.TestCase):
         return True
 
     def test_modify_purchase(self):
+        """Modeling a Purchase Workflow
+            Using simple FSM
+        """
         quantity = 5
         # Get the event and customer and generate a purchase.
         event = self.redis.hgetall(self.event_key)
